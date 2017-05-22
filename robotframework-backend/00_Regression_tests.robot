@@ -27,6 +27,4 @@ Test create and delete client
 Test create and update client
     Update client   
     
-    
-Test
-    Create client for update    
+  
