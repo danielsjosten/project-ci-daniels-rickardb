@@ -32,5 +32,12 @@ Test create and update client
 #Bedroom
 Get bedrooms
     Get all bedrooms
-        
+  
+#User
+Get all users
+    Get All Users
+    
+Create a user
+    Create A User
+          
       
