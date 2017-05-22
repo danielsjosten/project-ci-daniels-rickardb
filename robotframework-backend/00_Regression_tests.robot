@@ -2,8 +2,10 @@
 Library                   Collections
 Resource                  client_operations.robot
 Resource                  user_operations.robot
+Resource                  bedroom_operations.robot
 
 *** Test cases***
+#Client
 Test get total of clients
     Get the total of clients
     
@@ -27,4 +29,8 @@ Test create and delete client
 Test create and update client
     Update client   
     
-  
+#Bedroom
+Get bedrooms
+    Get all bedrooms
+        
+      
