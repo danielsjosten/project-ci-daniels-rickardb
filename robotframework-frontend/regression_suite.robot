@@ -9,6 +9,14 @@ Resource                                                              ./pages-an
 Resource                                                              ./pages-and-keywords/page_client.robot
 Resource                                                              ./pages-and-keywords/page_bedroom.robot
 Resource                                                              ./pages-and-keywords/page_user.robot
+Resource                                                              ./keywords/completeSteps_Keywords.robot
+Resource                                                              ./keywords/specificActions_Keywords.robot
+Resource                                                              ./variables/baseVariables.robot
+Resource                                                              ./variables/createAClientVariables.robot
+Resource                                                              ./variables/createAReservationVariables.robot
+Resource                                                              ./variables/editAReservationVariables.robot
+Resource                                                              ./variables/login_logoutVariables.robot
+Resource                                                              ./variables/titleVariables.robot
 
 Test Setup                                                            Setup
 Test Teardown                                                         Teardown
@@ -16,6 +24,22 @@ Test Teardown                                                         Teardown
 
 
 *** Test Cases ***
+
+Create a New Client
+    performLogin
+    createNewClient
+    Perform Logout
+
+#Create New Reservation     #--- BROKEN because of bug in the system
+ #   performLogin
+  #  createNewReservation
+   # performLogout
+    
+#Edit a Reservation         #--- BROKEN because of bug in the system
+ #   performLogin
+  #  editReservation
+   # performLogout
+    
 Test Case Valid Login And Logout
                                                                       Test Case Valid Login
                                                                       Perform Logout
