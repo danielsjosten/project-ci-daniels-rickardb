@@ -15,8 +15,8 @@ Test create a new client
 Test get all clients
                                     Get all clients
 
-Test get id from last client
-                                    Get id of last created client
+#Test get id from last client
+#                                   Get id of last created client
 
 Test get specific client from id
                                     Get specific client from id
@@ -33,15 +33,20 @@ Test create and update client
 Get bedrooms
                                     Get all bedrooms
 
-Get id of last bedroom
-                                    Get id of last created bedroom
+
 
 Test create new bedroom
                                     Create new bedroom
 
+#Get id of last bedroom
+#                                   Get id of last created bedroom
 
 
+Test Update bedroom
+                                    Update previously created bedroom
 
+Test Delete last created bedroom
+                                    Delete bedroom
 
 
 
