@@ -1,111 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20170522 17:17:19.977" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
+<robot generated="20170528 14:04:51.901" generator="Robot 3.0.2 (Python 2.7.12 on linux2)">
 <suite source="/home/robot/workspace/project-ci-daniels-rickardb" id="s1" name="Project-Ci-Daniels-Rickardb">
 <suite source="/home/robot/workspace/project-ci-daniels-rickardb/robotframework-backend" id="s1-s1" name="Robotframework-Backend">
 <suite source="/home/robot/workspace/project-ci-daniels-rickardb/robotframework-backend/00_Regression_tests.robot" id="s1-s1-s1" name="00 Regression tests">
-<test id="s1-s1-s1-t1" name="Create a user">
-<kw name="Create A User" library="user_operations">
-<kw name="Generate random user" library="user_operations">
+<test id="s1-s1-s1-t1" name="Delete a user">
+<kw name="Delete A User" library="user_operations">
+<kw name="Get Last Created User Id" library="user_operations">
 <assign>
-<var>${request_body}</var>
+<var>${last_user_id}</var>
 </assign>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this</doc>
 <arguments>
-<arg>20</arg>
+<arg>${http_context}</arg>
+<arg>${http_variable}</arg>
+</arguments>
+<msg timestamp="20170528 14:04:52.409" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
+<msg timestamp="20170528 14:04:52.409" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20170528 14:04:52.410" starttime="20170528 14:04:52.408"></status>
+</kw>
+<kw name="GET" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${get_all_user_endpoint}</arg>
+</arguments>
+<status status="PASS" endtime="20170528 14:04:52.501" starttime="20170528 14:04:52.411"></status>
+</kw>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${response_status1}</var>
+</assign>
+<msg timestamp="20170528 14:04:52.511" level="INFO">${response_status1} = 200 OK</msg>
+<status status="PASS" endtime="20170528 14:04:52.512" starttime="20170528 14:04:52.508"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response_status1}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" endtime="20170528 14:04:52.514" starttime="20170528 14:04:52.513"></status>
+</kw>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${request_body1}</var>
+</assign>
+<msg timestamp="20170528 14:04:52.516" level="INFO">${request_body1} = [{"id":13,"login":"Yanne","password":"1966e694bad90686516f99cdf432800fdca39290","typeUser":2,"clientId":{"id":5,"name":"YANNE","createDate":1473249124445,"email":"yanne_alencar@hotmail.com","gender":"...</msg>
+<status status="PASS" endtime="20170528 14:04:52.516" starttime="20170528 14:04:52.515"></status>
+</kw>
+<kw name="GET" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${get_user_counter_endpoint}</arg>
+</arguments>
+<status status="PASS" endtime="20170528 14:04:52.571" starttime="20170528 14:04:52.517"></status>
+</kw>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${response_status2}</var>
+</assign>
+<msg timestamp="20170528 14:04:52.573" level="INFO">${response_status2} = 200 OK</msg>
+<status status="PASS" endtime="20170528 14:04:52.573" starttime="20170528 14:04:52.572"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response_status2}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" endtime="20170528 14:04:52.574" starttime="20170528 14:04:52.574"></status>
+</kw>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${request_body2}</var>
+</assign>
+<msg timestamp="20170528 14:04:52.576" level="INFO">${request_body2} = 5</msg>
+<status status="PASS" endtime="20170528 14:04:52.576" starttime="20170528 14:04:52.575"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${request_body2}-1</arg>
 </arguments>
 <assign>
-<var>${id}</var>
+<var>${last_created_user}</var>
 </assign>
-<msg timestamp="20170522 17:17:20.527" level="INFO">${id} = 20</msg>
-<status status="PASS" endtime="20170522 17:17:20.527" starttime="20170522 17:17:20.526"></status>
+<msg timestamp="20170528 14:04:52.578" level="INFO">${last_created_user} = 4</msg>
+<status status="PASS" endtime="20170528 14:04:52.578" starttime="20170528 14:04:52.577"></status>
 </kw>
-<kw name="Generate Random String" library="String">
-<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
 <arguments>
-<arg>5</arg>
-<arg>[LOWER]</arg>
+<arg>${request_body1}</arg>
+<arg>/${last_created_user}/id</arg>
 </arguments>
 <assign>
-<var>${login}</var>
+<var>${user_id}</var>
 </assign>
-<msg timestamp="20170522 17:17:20.535" level="INFO">${login} = gsvtk</msg>
-<status status="PASS" endtime="20170522 17:17:20.536" starttime="20170522 17:17:20.534"></status>
+<msg timestamp="20170528 14:04:52.589" level="INFO">${user_id} = 31</msg>
+<status status="PASS" endtime="20170528 14:04:52.591" starttime="20170528 14:04:52.585"></status>
 </kw>
-<kw name="Generate Random String" library="String">
-<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
-<arguments>
-<arg>5</arg>
-<arg>[NUMBERS]</arg>
-</arguments>
-<assign>
-<var>${password}</var>
-</assign>
-<msg timestamp="20170522 17:17:20.541" level="INFO">${password} = 40486</msg>
-<status status="PASS" endtime="20170522 17:17:20.542" starttime="20170522 17:17:20.540"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>2</arg>
-</arguments>
-<assign>
-<var>${typeUser}</var>
-</assign>
-<msg timestamp="20170522 17:17:20.543" level="INFO">${typeUser} = 2</msg>
-<status status="PASS" endtime="20170522 17:17:20.543" starttime="20170522 17:17:20.542"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>{"id": 5, "name": "YANNE", "createDate": 1473267124445, "email": "yanne_alencar@hotmail.com", "gender": "F", "socialSecurityNumber": "5374855"}</arg>
-</arguments>
-<assign>
-<var>${clientId}</var>
-</assign>
-<msg timestamp="20170522 17:17:20.544" level="INFO">${clientId} = {"id": 5, "name": "YANNE", "createDate": 1473267124445, "email": "yanne_alencar@hotmail.com", "gender": "F", "socialSecurityNumber": "5374855"}</msg>
-<status status="PASS" endtime="20170522 17:17:20.544" starttime="20170522 17:17:20.544"></status>
-</kw>
-<kw name="Set Variable" library="BuiltIn">
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<arguments>
-<arg>{"id": 1, "code": 1, "name": "ACTIVE"}</arg>
-</arguments>
-<assign>
-<var>${userStatusId}</var>
-</assign>
-<msg timestamp="20170522 17:17:20.546" level="INFO">${userStatusId} = {"id": 1, "code": 1, "name": "ACTIVE"}</msg>
-<status status="PASS" endtime="20170522 17:17:20.546" starttime="20170522 17:17:20.545"></status>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<arguments>
-<arg>id=${id}</arg>
-<arg>login=${login}</arg>
-<arg>password=${password}</arg>
-<arg>typeUser=${typeUser}</arg>
-<arg>clientId=${clientId}</arg>
-<arg>userStatusId=${userStatusId}</arg>
-</arguments>
-<assign>
-<var>${dictionary}</var>
-</assign>
-<msg timestamp="20170522 17:17:20.552" level="INFO">${dictionary} = {u'id': u'20', u'login': u'gsvtk', u'password': u'40486', u'typeUser': u'2', u'clientId': u'{"id": 5, "name": "YANNE", "createDate": 1473267124445, "email": "yanne_alencar@hotmail.com", "gender": "F",...</msg>
-<status status="PASS" endtime="20170522 17:17:20.552" starttime="20170522 17:17:20.546"></status>
-</kw>
-<kw name="Stringify Json" library="HttpLibrary.HTTP">
-<doc>Converts the data structure to a string containing its JSON string representation</doc>
-<arguments>
-<arg>${dictionary}</arg>
-</arguments>
-<assign>
-<var>${user_json1}</var>
-</assign>
-<msg timestamp="20170522 17:17:20.557" level="INFO">${user_json1} = {"id": "20", "login": "gsvtk", "password": "40486", "typeUser": "2", "clientId": "{\"id\": 5, \"name\": \"YANNE\", \"createDate\": 1473267124445, \"email\": \"yanne_alencar@hotmail.com\", \"gender\": ...</msg>
-<status status="PASS" endtime="20170522 17:17:20.557" starttime="20170522 17:17:20.553"></status>
-</kw>
-<msg timestamp="20170522 17:17:20.559" level="INFO">${request_body} = {"id": "20", "login": "gsvtk", "password": "40486", "typeUser": "2", "clientId": "{\"id\": 5, \"name\": \"YANNE\", \"createDate\": 1473267124445, \"email\": \"yanne_alencar@hotmail.com\", \"gender\": ...</msg>
-<status status="PASS" endtime="20170522 17:17:20.559" starttime="20170522 17:17:20.518"></status>
+<msg timestamp="20170528 14:04:52.592" level="INFO">${last_user_id} = 31</msg>
+<status status="PASS" endtime="20170528 14:04:52.592" starttime="20170528 14:04:52.408"></status>
 </kw>
 <kw name="Create Http Context" library="HttpLibrary.HTTP">
 <doc>Sets the HTTP host to use for future requests. You must call this</doc>
@@ -113,72 +113,54 @@
 <arg>${http_context}</arg>
 <arg>${http_variable}</arg>
 </arguments>
-<msg timestamp="20170522 17:17:20.560" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
-<msg timestamp="20170522 17:17:20.561" level="INFO">Scheme for next HTTP request set to 'http'</msg>
-<status status="PASS" endtime="20170522 17:17:20.561" starttime="20170522 17:17:20.559"></status>
+<msg timestamp="20170528 14:04:52.593" level="INFO">Host for next HTTP request set to 'localhost:8080'</msg>
+<msg timestamp="20170528 14:04:52.593" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20170528 14:04:52.594" starttime="20170528 14:04:52.593"></status>
 </kw>
-<kw name="Set Request Header" library="HttpLibrary.HTTP">
-<doc>Sets a request header for the next request.</doc>
+<kw name="DELETE" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP DELETE request.</doc>
 <arguments>
-<arg>Content-Type</arg>
-<arg>${header_content_json}</arg>
+<arg>${delete_a_user_endpoint}${last_user_id}</arg>
 </arguments>
-<msg timestamp="20170522 17:17:20.562" level="INFO">Set request header "Content-Type" to "application/json"</msg>
-<status status="PASS" endtime="20170522 17:17:20.569" starttime="20170522 17:17:20.561"></status>
+<status status="PASS" endtime="20170528 14:04:52.723" starttime="20170528 14:04:52.594"></status>
 </kw>
-<kw name="Set Request Header" library="HttpLibrary.HTTP">
-<doc>Sets a request header for the next request.</doc>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${response_status}</var>
+</assign>
+<msg timestamp="20170528 14:04:52.724" level="INFO">${response_status} = 204 No Content</msg>
+<status status="PASS" endtime="20170528 14:04:52.724" starttime="20170528 14:04:52.723"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
 <arguments>
-<arg>Accept</arg>
-<arg>${header_accept_all}</arg>
+<arg>${response_status}</arg>
+<arg>204</arg>
 </arguments>
-<msg timestamp="20170522 17:17:20.572" level="INFO">Set request header "Accept" to "*/*"</msg>
-<status status="PASS" endtime="20170522 17:17:20.574" starttime="20170522 17:17:20.570"></status>
+<status status="PASS" endtime="20170528 14:04:52.725" starttime="20170528 14:04:52.724"></status>
 </kw>
-<kw name="Set Request Body" library="HttpLibrary.HTTP">
-<doc>Set the request body for the next HTTP request.</doc>
-<arguments>
-<arg>${request_body}</arg>
-</arguments>
-<msg timestamp="20170522 17:17:20.575" level="INFO">Request body set to "{"id": "20", "login": "gsvtk", "password": "40486", "typeUser": "2", "clientId": "{\"id\": 5, \"name\": \"YANNE\", \"createDate\": 1473267124445, \"email\": \"yanne_alencar@hotmail.com\", \"gender\": \"F\", \"socialSecurityNumber\": \"5374855\"}", "userStatusId": "{\"id\": 1, \"code\": 1, \"name\": \"ACTIVE\"}"}".</msg>
-<status status="PASS" endtime="20170522 17:17:20.576" starttime="20170522 17:17:20.575"></status>
+<status status="PASS" endtime="20170528 14:04:52.725" starttime="20170528 14:04:52.407"></status>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<doc>Logs the given message to the console.</doc>
-<arguments>
-<arg>${request_body}</arg>
-</arguments>
-<status status="PASS" endtime="20170522 17:17:20.578" starttime="20170522 17:17:20.577"></status>
-</kw>
-<kw name="POST" library="HttpLibrary.HTTP">
-<doc>Issues a HTTP POST request.</doc>
-<arguments>
-<arg>${create_a_user_endpoint}</arg>
-</arguments>
-<msg timestamp="20170522 17:17:21.262" level="FAIL">Request should have succeeded, but was "500 Internal Server Error".</msg>
-<status status="FAIL" endtime="20170522 17:17:21.262" starttime="20170522 17:17:20.578"></status>
-</kw>
-<status status="FAIL" endtime="20170522 17:17:21.263" starttime="20170522 17:17:20.516"></status>
-</kw>
-<status status="FAIL" endtime="20170522 17:17:21.263" critical="yes" starttime="20170522 17:17:20.510">Request should have succeeded, but was "500 Internal Server Error".</status>
+<status status="PASS" endtime="20170528 14:04:52.726" critical="yes" starttime="20170528 14:04:52.405"></status>
 </test>
-<status status="FAIL" endtime="20170522 17:17:21.264" starttime="20170522 17:17:20.182"></status>
+<status status="PASS" endtime="20170528 14:04:52.727" starttime="20170528 14:04:52.089"></status>
 </suite>
-<status status="FAIL" endtime="20170522 17:17:21.271" starttime="20170522 17:17:20.178"></status>
+<status status="PASS" endtime="20170528 14:04:52.730" starttime="20170528 14:04:52.086"></status>
 </suite>
-<status status="FAIL" endtime="20170522 17:17:21.275" starttime="20170522 17:17:20.101"></status>
+<status status="PASS" endtime="20170528 14:04:52.732" starttime="20170528 14:04:52.012"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="1" pass="0">Critical Tests</stat>
-<stat fail="1" pass="0">All Tests</stat>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="1" id="s1" name="Project-Ci-Daniels-Rickardb" pass="0">Project-Ci-Daniels-Rickardb</stat>
-<stat fail="1" id="s1-s1" name="Robotframework-Backend" pass="0">Project-Ci-Daniels-Rickardb.Robotframework-Backend</stat>
-<stat fail="1" id="s1-s1-s1" name="00 Regression tests" pass="0">Project-Ci-Daniels-Rickardb.Robotframework-Backend.00 Regression tests</stat>
+<stat fail="0" id="s1" name="Project-Ci-Daniels-Rickardb" pass="1">Project-Ci-Daniels-Rickardb</stat>
+<stat fail="0" id="s1-s1" name="Robotframework-Backend" pass="1">Project-Ci-Daniels-Rickardb.Robotframework-Backend</stat>
+<stat fail="0" id="s1-s1-s1" name="00 Regression tests" pass="1">Project-Ci-Daniels-Rickardb.Robotframework-Backend.00 Regression tests</stat>
 </suite>
 </statistics>
 <errors>
