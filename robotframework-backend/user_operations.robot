@@ -24,6 +24,7 @@ ${delete_a_user_endpoint}=          /hotel-rest/webresources/user/         #add 
 
 
 *** keywords ***
+#Generates a User and a Client with mostly random Data
 Generate Random User and Client Data
     #User
     ${id}=  Set Variable    50
@@ -48,7 +49,8 @@ Generate Random User and Client Data
     ${user_json}=    Stringify Json    ${dictionary}
     [return]        ${user_json}
     
-Modify User Data    [Arguments]    ${last_created_user_id}
+#Modifies a User and Client with Random Data
+Modify User and Client Data    [Arguments]    ${last_created_user_id}
     #User
     ${id}=  Set Variable    ${last_created_user_id}
     ${login}=    Generate Random String    10    [LOWER]
@@ -119,7 +121,7 @@ Create A User
 
 Update A User
     ${last_user_id}=               Get Last Created User Id
-    ${request_body}=               Modify User Data            ${last_user_id}
+    ${request_body}=               Modify User Data and Client Data           ${last_user_id}
     Create Http Context            ${http_context}             ${http_variable}
     Set Request Header             Content-Type                ${header_content_json}
     Set Request Header             Accept                      ${header_accept_all}
