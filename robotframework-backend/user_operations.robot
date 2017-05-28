@@ -88,7 +88,8 @@ Get Last Created User Id
     ${user_id}=                    Get Json Value    ${request_body1}    /${last_created_user}/id
     [return]                       ${user_id}
     
-    
+# ------------------------------------------------
+# Keywords with complete actions (Test Cases) - called upon in 00_Regression_tests.robot
 Get All Users
     Create Http Context            ${http_context}            ${http_variable}
     Get                            ${get_all_user_endpoint}
