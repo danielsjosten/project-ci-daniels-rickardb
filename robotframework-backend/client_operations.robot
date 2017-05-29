@@ -4,6 +4,8 @@ Library                                Collections
 Library                                String
 Library                                json
 
+Resource                               variables.robot
+
 *** variables ***
 ${http_context}=                       localhost:8080
 ${http_variable}=                      http
@@ -25,10 +27,10 @@ Generate a random client
                                        ${id}=                                   Set Variable                                                             100
                                        ${name}=                                 Generate random String                                                   10                          [LOWER]
                                        ${createDate}=                           Set Variable                                                             1473633063279
-                                       ${email}=                                Catenate                                                                 SEPARATOR=                  ${name}              @email.com
+                                       ${email}=                                Catenate                                                                 SEPARATOR=                  ${name}                                                                                                                                                                                                                                                 @email.com
                                        ${socialSecurityNumber}=                 Generate Random String                                                   9                           [NUMBERS]
                                        ${gender}=                               Generate Random String                                                   1                           MF
-                                       ${dictionary}=                           Create Dictionary                                                        id=${id}                    name=${name}         createDate=${createDate}    email=${email}    gender=${gender}    socialSecurityNumber=${socialSecurityNumber}
+                                       ${dictionary}=                           Create Dictionary                                                        id=${id}                    name=${name}                                                                                                                                                                                                                                            createDate=${createDate}                                  email=${email}    gender=${gender}    socialSecurityNumber=${socialSecurityNumber}
                                        ${client_json}=                          Stringify Json                                                           ${dictionary}
                                        log to console                           \nRandomly generated client Json:\n${client_json}
                                        [return]                                 ${client_json}
@@ -126,10 +128,10 @@ Generate a random client for update
                                        ${id}=                                   Get id of last created client
                                        ${name}=                                 Generate random String                                                   10                          [LOWER]
                                        ${createDate}=                           Set Variable                                                             1473633063279
-                                       ${email}=                                Catenate                                                                 SEPARATOR=                  ${name}              @email.com
+                                       ${email}=                                Catenate                                                                 SEPARATOR=                  ${name}                                                                                                                                                                                                                                                 @email.com
                                        ${socialSecurityNumber}=                 Generate Random String                                                   9                           [NUMBERS]
                                        ${gender}=                               Generate Random String                                                   1                           MF
-                                       ${dictionary}=                           Create Dictionary                                                        id=${id}                    name=${name}         createDate=${createDate}    email=${email}    gender=${gender}    socialSecurityNumber=${socialSecurityNumber}
+                                       ${dictionary}=                           Create Dictionary                                                        id=${id}                    name=${name}                                                                                                                                                                                                                                            createDate=${createDate}                                  email=${email}    gender=${gender}    socialSecurityNumber=${socialSecurityNumber}
                                        ${update_client_json}=                   Stringify Json                                                           ${dictionary}
                                        [return]                                 ${update_client_json}
 
@@ -169,3 +171,4 @@ Update client
                                        ${response_status}=                      Get Response Status
                                        log to console                           ${\n}Status code:${response_status}
                                        Should Contain                           ${response_status}                                                       204
+
