@@ -33,8 +33,6 @@ Test create and update client
 Get bedrooms
                                        Get all bedrooms
 
-
-
 Test create new bedroom
                                        Create new bedroom
 
@@ -49,10 +47,19 @@ Test Delete last created bedroom
                                        Delete bedroom
 
 
+#User
+Get all users
+                                       Get All Users
 
+Get total of users
+                                       Get Total Of Users
 
+Create a user
+                                       Create A User
 
+Update a user
+                                       Update A User
 
-
-
+Delete a user
+                                       Delete A User
 
